@@ -7,11 +7,14 @@ const isDesktop = window.matchMedia('(min-width: 900px)');
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
+    const headerCard = nav.querySelector('.header-card');
     const navSections = nav.querySelector('.nav-sections');
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
+      toggleAllNavSections(headerCard);
       toggleAllNavSections(navSections);
+
       navSectionExpanded.focus();
     } else if (!isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
@@ -141,8 +144,11 @@ export default async function decorate(block) {
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
+ 
+
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
 }
