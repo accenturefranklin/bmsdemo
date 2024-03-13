@@ -83,7 +83,7 @@
 .section.text-overlay{
   top: 0;
   margin-top: 170px;
-margin-left: 300px;
+  margin-left: 300px;
   border-radius: 8px;
   opacity: 0.95;
   background: var(--scope-gradients-light-color-left);
